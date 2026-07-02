@@ -49,7 +49,11 @@ float** Create_Matrix(int rows, int colls){
         }
     }
 
-    for(int current_ROW = 0; current_ROW < rows; current_ROW++){
+    return matrix_pointer;
+}
+
+void Fill_Matrix(float **matrix_pointer, int rows, int colls){
+        for(int current_ROW = 0; current_ROW < rows; current_ROW++){
 
         printf("Enter %d row numbers:", current_ROW);
         for(int current_COLL = 0; current_COLL < colls; current_COLL++){
@@ -58,21 +62,42 @@ float** Create_Matrix(int rows, int colls){
         printf("\n");
     }
 
-    return matrix_pointer;
 }
 
-void Delete_Matrix(float **matrix_ptr, int rows){
+void Display_Matrix(float **matrix_pointer, int rows, int colls){
     for(int current_ROW = 0; current_ROW < rows; current_ROW++){
-        free(matrix_ptr[current_ROW]);
+        for(int current_COLL = 0; current_COLL < colls; current_COLL++){
+            printf("%.2f ", matrix_pointer[current_ROW][current_COLL]);
+        }
+    printf("\n");
     }
 
-    free(matrix_ptr);
+
+}
+
+void Delete_Matrix(float **matrix_pointer, int rows){
+    for(int current_ROW = 0; current_ROW < rows; current_ROW++){
+        free(matrix_pointer[current_ROW]);
+    }
+
+    free(matrix_pointer);
 }
 
 int main(){
-    int Current_Operation = Select_Operation();
 
-    float **matrix1 = Create_Matrix(2, 3);
+    int rows, colls;
+
+    printf("Enter ROWS number: ");
+    scanf("%d", &rows);
+
+    printf("Enter COLLS number: ");
+    scanf("%d", &colls);
+
+    float **matrix1 = Create_Matrix(rows, colls);
+
+    Fill_Matrix(matrix1, rows, colls);
+
+    Display_Matrix(matrix1, rows, colls);
 
     Delete_Matrix(matrix1, 2);
 
