@@ -39,10 +39,10 @@ int main(){
     matrix1.rows = 2;
     matrix1.colls = 3;
 
-    matrix1.data = Create_Matrix(matrix1.rows, matrix1.colls);
-    Fill_Matrix(matrix1.data, matrix1.rows, matrix1.colls);
-    Display_Matrix(matrix1.data, matrix1.rows, matrix1.colls);
-    Delete_Matrix(matrix1.data, matrix1.rows);
+    Create_Matrix(&matrix1);
+    Fill_Matrix(&matrix1);
+    Display_Matrix(&matrix1);
+    Delete_Matrix(&matrix1);
 
     Vector vector1;
     vector1.elements = 5;
