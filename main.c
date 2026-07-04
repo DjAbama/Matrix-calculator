@@ -1,39 +1,41 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "matrix.h"
 #include "vector.h"
 
-int Select_Operation() {
-    int Operation_Variable = 0; 
+typedef enum {
+    Add = 1,
+    Subtract = 2,
+    Multiply = 3,
+    Transpose = 4,
+    Find_Definer = 5
+} Operations;
 
-    printf("Avaliable Operations:\n 1.Add\n 2.Subtract\n 3.Multiply\n 4.Transpose\n 5.Find definer\nSelect Option: ");
-    scanf("%d", &Operation_Variable);
+void Select_Operation(Operations *operation) {
+    int selected_op;
 
-    switch(Operation_Variable) {
-        case 1:
-            printf("Selected operation: Add\n");
-            break;
-        case 2:
-            printf("Selected operation: Subtract\n");
-            break;
-        case 3:
-            printf("Selected operation: Multiply\n");
-            break;
-        case 4:
-            printf("Selected operation: Transpose\n");
-            break;
-        case 5:
-            printf("Selected operation: Find definer\n");
-            break;
-        default:
-            printf("Error: Invalid operation\n");
-            break;
+    printf("Select Operation: \n");
+    printf("1.Add\n");
+    printf("2.Subtract\n");
+    printf("3.Multiply\n");
+    printf("4.Transpose\n");
+    printf("5.Find Definer");
+
+    scanf("%d", &selected_op);
+    if(selected_op > 0 && selected_op <= 5){
+        *operation = (Operations)selected_op;
     }
-
-
-    return Operation_Variable;   
+    else{
+        printf("Error: Invalid Operation");
+        exit(1);
+    }
 }
 
 int main(){
+
+    Operations Selected_Operaion;
+    Select_Operation(&Selected_Operaion);
+
 
     Matrix matrix1;
     matrix1.rows = 2;
