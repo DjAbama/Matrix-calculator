@@ -9,9 +9,9 @@ typedef struct{
 } Matrix;
 
 
-float** Create_Matrix(int rows, int colls);
-void Fill_Matrix(float **matrix_pointer, int rows, int colls);
-void Display_Matrix(float **matrix_pointer, int rows, int colls);
-void Delete_Matrix(float **matrix_pointer, int rows);
+void Create_Matrix(Matrix *matrix);
+void Fill_Matrix(Matrix *matrix);
+void Display_Matrix(Matrix *matrix);
+void Delete_Matrix(Matrix *matrix);
 
 #endif
