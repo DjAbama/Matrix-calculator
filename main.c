@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "matrix.h"
+#include "vector.h"
 
 int Select_Operation() {
     int Operation_Variable = 0; 
@@ -42,7 +43,15 @@ int main(){
     Fill_Matrix(matrix1.data, matrix1.rows, matrix1.colls);
     Display_Matrix(matrix1.data, matrix1.rows, matrix1.colls);
     Delete_Matrix(matrix1.data, matrix1.rows);
-    
+
+    Vector vector1;
+    vector1.elements = 5;
+
+    Create_Vector(&vector1);
+    Fill_Vector(&vector1);
+    Display_Vector(&vector1);
+    Delete_Vector(&vector1);
+
 
     return 0;
 }

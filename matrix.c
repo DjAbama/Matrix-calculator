@@ -3,10 +3,6 @@
 #include <stdlib.h>
 
 
-
-
-
-
 float** Create_Matrix(int rows, int colls){
     float **matrix_pointer = calloc(rows, sizeof(float *));
 
