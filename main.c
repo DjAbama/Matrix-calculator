@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include "matrix.h"
 
 int Select_Operation() {
     int Operation_Variable = 0; 
@@ -32,74 +32,17 @@ int Select_Operation() {
     return Operation_Variable;   
 }
 
-float** Create_Matrix(int rows, int colls){
-    float **matrix_pointer = calloc(rows, sizeof(float *));
-
-    if(matrix_pointer == NULL){
-        printf("Error: Not enough memory");
-        return NULL;
-    }
-
-    for(int current_ROW = 0; current_ROW < rows; current_ROW++){
-        matrix_pointer[current_ROW] = calloc(colls, sizeof(float));
-
-        if(matrix_pointer[current_ROW] == NULL){
-            printf("Error: Not enough memory");
-            return NULL;
-        }
-    }
-
-    return matrix_pointer;
-}
-
-void Fill_Matrix(float **matrix_pointer, int rows, int colls){
-        for(int current_ROW = 0; current_ROW < rows; current_ROW++){
-
-        printf("Enter %d row numbers:", current_ROW);
-        for(int current_COLL = 0; current_COLL < colls; current_COLL++){
-            scanf("%f", &matrix_pointer[current_ROW][current_COLL]);
-        }
-        printf("\n");
-    }
-
-}
-
-void Display_Matrix(float **matrix_pointer, int rows, int colls){
-    for(int current_ROW = 0; current_ROW < rows; current_ROW++){
-        for(int current_COLL = 0; current_COLL < colls; current_COLL++){
-            printf("%.2f ", matrix_pointer[current_ROW][current_COLL]);
-        }
-    printf("\n");
-    }
-
-
-}
-
-void Delete_Matrix(float **matrix_pointer, int rows){
-    for(int current_ROW = 0; current_ROW < rows; current_ROW++){
-        free(matrix_pointer[current_ROW]);
-    }
-
-    free(matrix_pointer);
-}
-
 int main(){
 
-    int rows, colls;
+    Matrix matrix1;
+    matrix1.rows = 2;
+    matrix1.colls = 3;
 
-    printf("Enter ROWS number: ");
-    scanf("%d", &rows);
-
-    printf("Enter COLLS number: ");
-    scanf("%d", &colls);
-
-    float **matrix1 = Create_Matrix(rows, colls);
-
-    Fill_Matrix(matrix1, rows, colls);
-
-    Display_Matrix(matrix1, rows, colls);
-
-    Delete_Matrix(matrix1, 2);
+    matrix1.data = Create_Matrix(matrix1.rows, matrix1.colls);
+    Fill_Matrix(matrix1.data, matrix1.rows, matrix1.colls);
+    Display_Matrix(matrix1.data, matrix1.rows, matrix1.colls);
+    Delete_Matrix(matrix1.data, matrix1.rows);
+    
 
     return 0;
 }
